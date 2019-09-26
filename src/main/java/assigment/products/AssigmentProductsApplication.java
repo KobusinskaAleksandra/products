@@ -14,7 +14,8 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication(scanBasePackages = {"assigment.products"})
 @ComponentScan("assigment.products")
-@PropertySource({"classpath:application_${spring.profiles.active}.properties"})
+@PropertySource({"classpath:application_${spring.profiles.active}.properties","classpath:db_${spring.profiles.active}.properties"})
+
 public class AssigmentProductsApplication extends SpringBootServletInitializer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AssigmentProductsApplication.class);
