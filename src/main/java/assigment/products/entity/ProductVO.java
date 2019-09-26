@@ -1,6 +1,7 @@
 package assigment.products.entity;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -20,6 +21,6 @@ public class ProductVO {
     
     private double currentPrice;
     
-    private LocalDateTime lastUpdated;
+    private Date lastUpdated;
 
 }
