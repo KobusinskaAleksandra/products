@@ -59,6 +59,8 @@ public class ProductService {
 	
 	public void addProduct(String productString) {
 		ProductVO product =  new Gson().fromJson(productString, ProductVO.class);
+		if(product.getLastUpdated()==null)
+			product.setLastUpdated(new Date());
 		productRepository.save(product);
 	}
 	

@@ -7,4 +7,6 @@ import assigment.products.entity.ProductVO;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductVO, Long> {
+
+	ProductVO findByName(String name);
 }
