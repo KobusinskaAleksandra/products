@@ -19,7 +19,7 @@ public class ProductVO {
     
     private String name;
     
-    private double currentPrice;
+    private Double currentPrice;
     
     private Date lastUpdated;
 

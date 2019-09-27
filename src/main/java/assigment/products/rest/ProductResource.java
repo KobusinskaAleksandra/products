@@ -1,11 +1,11 @@
 package assigment.products.rest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import assigment.products.entity.ProductVO;
 import assigment.products.service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 
 @Component
 @Path("/")
-
+@Slf4j
 public class ProductResource {
 
 	@Autowired
@@ -33,6 +33,7 @@ public class ProductResource {
 	public Response updateProduct(@PathParam("id") Long id, String productString) throws Exception {
 		try {
 			productService.updateProduct(id, productString);
+			log.info("Product with id: " + id + " successfully updated.");
 			return Response.ok().entity("Product with id: " + id + " successfully updated.").build();
 		} catch (NotFoundException e) {
 			return Response.status(500).entity(e.getMessage()).build();
@@ -45,8 +46,8 @@ public class ProductResource {
 	@Path("/products")
 	public Response createProduct(String productString) throws Exception {
 		try {
-			productService.addProduct(productString);
-			return Response.ok().build();
+			ProductVO product = productService.addProduct(productString);
+			return Response.ok().entity("Product added to database with id: " + product.getId()).build();
 		} catch (NotFoundException e) {
 			return Response.serverError().build();
 		}
